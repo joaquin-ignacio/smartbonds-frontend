@@ -1,0 +1,192 @@
+<mat-toolbar class="toolbarFlex" style="background: #111111">
+  <p style="font-size: 20px; color: #F8DC5F; margin-right: 2100px;">Bienvenido a Smartbonds</p>
+  <button mat-button (click)="logOut()" class="logoutBtn" >Cerrar Sesion</button>
+</mat-toolbar>
+<body>
+<section class="calculator">
+  <div class="calculator__inputs">
+    <form [formGroup]="bondForm" (ngSubmit)="submitForm()">
+      <mat-grid-list cols="4" rowHeight="70px">
+        <mat-grid-tile [colspan]="1" [rowspan] = "1" >
+          <mat-form-field style="width: 80%;">
+            <mat-label>Valor Nominal</mat-label>
+            <input matInput autocomplete="off" type="number" formControlName="valorNominal" [(ngModel)]="bondData.valorNominal" required >
+
+
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan] = "1" >
+          <mat-form-field style="width: 80%;">
+            <mat-label>Tasa %</mat-label>
+            <input matInput autocomplete="off" type="number" formControlName="tasaCupon" [(ngModel)]="bondData.tasaCupon" required>
+
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan] = "1" >
+          <form>
+            <h4>mat-select</h4>
+            <mat-form-field appearance="fill">
+              <mat-label>Tipo de pago</mat-label>
+              <select matNativeControl [(ngModel)]="selectedPeriod" name="periodo">
+
+                <option *ngFor="let car of periods" [value]="car.name">
+                  {{car.name}}
+                </option>
+              </select>
+            </mat-form-field>
+
+          </form>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan] = "1" >
+          <mat-form-field style="width: 80%;">
+            <mat-label>Vencimiento</mat-label>
+            <input matInput autocomplete="off" type="number" formControlName="vencimiento" [(ngModel)]="bondData.vencimiento" required>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan] = "1" >
+          <mat-form-field style="width: 80%;">
+            <mat-label>Tasa de negociacion %</mat-label>
+            <input matInput autocomplete="off" type="number" formControlName="tasaNegociacion" [(ngModel)]= "bondData.tasaNegociacion" required>
+
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan] = "1" >
+
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan] = "1" >
+        </mat-grid-tile>
+        <button mat-button class="calculateBtn"  (click)="calculate()">Calcular</button>
+      </mat-grid-list>
+    </form>
+  </div>
+
+  <div class="calculator__options">
+    <form class="form__options">
+      <div class="form__options__mount">
+        <div class="input2">
+          <label for="Uname">Tipo de tasa:</label>
+          <label for="checkbox1"><input type="checkbox" id="checkbox1" name="checkbox1" value="Yes1"> Nominal </label>
+          <label for="checkbox3"><input type="checkbox" id="checkbox3" name="checkbox3" value="Yes1"> Efectivo </label>
+        </div>
+        <div class="input2">
+          <label for="Uname">Moneda:</label>
+          <label for="checkbox2"><input type="checkbox" id="checkbox2" name="checkbox2" value="Yes2"> Soles </label>
+          <label for="checkbox3"><input type="checkbox" id="checkbox3" name="checkbox3" value="Yes2"> Dolares </label>
+        </div>
+      </div>
+      <div class="input3">
+        <label for="Cname">Capitalizacion:</label><br>
+        <mat-form-field appearance="fill">
+          <select matNativeControl id="Cname" name="select2">
+            <option value="value1"selected>Anual</option>
+            <option value="value2">Semestral</option>
+            <option value="value3">Cuatrimestral</option>
+            <option value="value4">Trimestral</option>
+            <option value="value5">Bimestral</option>
+            <option value="value6">Mensual</option>
+            <option value="value7">Quincenal</option>
+            <option value="value8">Diaria</option>
+          </select>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+
+
+
+</section>
+
+<button  mat-raised-button class="resetBtn"  (click)="refreshTables()" >Reiniciar</button>
+<div class="tablas">
+  <table class="default">
+    <tr>
+      <td>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> Periodo </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Capital </th>
+              <td mat-cell *matCellDef="let element"> {{element.capital}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef> Amortizacion </th>
+              <td mat-cell *matCellDef="let element"> {{element.amortizacion}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef> Interes </th>
+              <td mat-cell *matCellDef="let element"> {{element.intereses}} </td>
+            </ng-container>
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="couta">
+              <th mat-header-cell *matHeaderCellDef> Cuota </th>
+              <td mat-cell *matCellDef="let element"> {{element.couta}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsAmortizacion"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsAmortizacion;"></tr>
+          </table>
+        </div>
+      </td>
+
+    <tr>
+      <td>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource3">
+            <!-- Position Column -->
+            <ng-container matColumnDef="flujovpt">
+              <th mat-header-cell *matHeaderCellDef> FLUJO VP*T. </th>
+              <td mat-cell *matCellDef="let element" > {{element.flujoVPT}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="convexidad">
+              <th mat-header-cell *matHeaderCellDef> CONVEXIDAD </th>
+              <td mat-cell *matCellDef="let element"> {{element.convexidad}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columnsConxexidad"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsConxexidad;"></tr>
+          </table>
+        </div>
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table>
+
+  <mat-card class="result-card">
+    <mat-card-title>
+      <h1 style="text-align: center">Cálculos</h1>
+    </mat-card-title>
+    <mat-card-content>
+      <p>Precio del Bono en Mer. Sec.:</p>
+      <p>{{sumaFlujoVp}}</p>
+      <hr>
+      <p>Duracion:</p>
+      <p>{{duracion}}</p>
+      <hr>
+      <p>Duracion Media:</p>
+      <p>{{duracionMod}}</p>
+      <hr>
+      <p>Precio del bono</p>
+      <p>{{precioBono}}</p>
+      <hr>
+      <p>Convexidad</p>
+      <p>{{convexidad}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- get tablas -->
+</body>

@@ -1,0 +1,32 @@
+<div class= "split left">
+  <div class="centered">
+    <img src="../../assets/img/SmartBonds.jpg">
+  </div>
+</div>
+<div class="split right">
+  <div class="centered">
+    <h1>Crea una cuenta en SmartBonds</h1>
+    <form class="form1" [formGroup]="registerForm" (submit)="submittedForm()">
+      <section class="leftCol">
+        <input class="nombre" id="Uname" name="nname" placeholder="Nombre *"
+        type="text" formControlName="name" [(ngModel)]="userCreated.name">
+        <input class="apellidos" id="Aname" name="aname" placeholder="Username *"
+        type="text" formControlName="username" [(ngModel)]="userCreated.username">
+      </section>
+      <section class="rightCol">
+        <input class="contraseña" id="Pname" name="passname" placeholder="Contraseña *"
+        type="password" formControlName="password" [(ngModel)]="userCreated.password">
+      </section>
+    </form>
+    <form class="form2">
+      <input type="checkbox" id="checkbox1" name="checkbox1" value="Yes1">
+      <label for="checkbox1"> Acepto las términos y condiciones y envío de privacidad.</label><br>
+      <input type="checkbox" id="checkbox2" name="checkbox2" value="Yes2">
+      <label for="checkbox2"> Acepto recibir notificaciones de futuras actualizaciones</label><br>
+      <input type="image" src="../../assets/img/gmail.png"  alt="Submit"/>
+    </form>
+    <button mat-button class="buttonRegister" (click)="registerUser()">Registrarme</button>
+    <br>
+    <button mat-button class="backBtn" (click)="getBack()">Volver</button>
+  </div>
+</div>

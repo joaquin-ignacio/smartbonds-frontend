@@ -1,0 +1,99 @@
+.split{
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+}
+.left {
+  left: 0;
+  background-color: #111;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: white;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+}
+
+form{
+  text-align: left;
+}
+
+.form1{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+
+}
+.nombre{
+  margin-top: 150px;
+  padding-right: 100px;
+  padding-bottom: 10px;
+  margin-right: 100px;
+  margin-bottom: 30px;
+}
+.apellidos{
+  padding-right: 100px;
+  padding-bottom: 10px;
+  margin-bottom: 50px;
+}
+.contraseña{
+  margin-top: 150px;
+  padding-right: 100px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+.confirmacion{
+  padding-right: 100px;
+  padding-bottom: 10px;
+  margin-bottom: 50px;
+}
+.section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 700px;
+  height: 100%;
+}
+
+.centered button{
+  border-radius: 6px;
+}
+
+input[type=checkbox], input[type=image]{
+  margin-left: 150px;
+  margin-bottom: 20px;
+}
+h1{
+
+  font-size:  40px;
+
+}
+label{
+  text-align: left;
+}
+
+.buttonRegister {
+  background-color: #F8DC5F;
+}
+
+.backBtn {
+  background-color: red;
+  margin-top: 10px;
+  color: #eeeeee;
+}

@@ -1,0 +1,131 @@
+body {
+  background-color: #eee;
+}
+
+
+.logoutBtn {
+  background-color: red;
+  color: #eeeeee;
+  alignment: right;
+}
+
+.toolbarFlex {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+}
+
+
+.flow-card {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 25px;
+  width: 60%;
+  display: inline-block;
+}
+
+.result-card {
+  margin: 0 auto;
+  width: 50%;
+  display: inline-block;
+}
+
+button {
+  margin-bottom: 14px;
+}
+
+table {
+  width: 100%;
+}
+
+.main-div{
+  width: 100%;
+  text-align:center;
+}
+mat-grid-tile {
+  max-height: 1000px;
+}
+
+.tablas {
+  width: 50%;
+}
+
+.title{
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  color: yellow;
+  background-color: #111;
+  text-align: center;
+  font-size: 50px;
+}
+
+.button{
+  background-color: aquamarine;
+  width: 300px;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 15px;
+  border: 1px solid black;
+  cursor: pointer;
+  margin-left: 300px;
+  margin-top: 1rem;
+}
+.input{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+.input2{
+  display: flex;
+  flex-direction: column;
+}
+input, select{
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.calculateBtn {
+  position: relative;
+  top: 170px;
+  left: 25px;
+  background-color: #F8DC5F;
+}
+
+.resetBtn {
+  background-color: #F8DC5F;
+}
+
+.calculator{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: 90%;
+  margin: 2rem auto;
+}
+.form__inputs{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.calculator__inputs{
+  display: flex;
+  flex-direction: column;
+}
+.calculator__options{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form__options{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  border: 1px solid black;
+}
+.form__options__mount{
+  display: flex;
+  gap: 3rem;
+}
